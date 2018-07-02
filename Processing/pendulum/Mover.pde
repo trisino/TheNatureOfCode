@@ -9,6 +9,7 @@ class Mover {
 
  float mass;
  float cord_rest_length = 0;
+ float cord_stiffness = 10;
 
  PVector pin_location;
  PVector cord;
@@ -42,12 +43,13 @@ class Mover {
  }
 
  void update(){
-  // Compute the magnitude and direction of the reaction in the cord
-  float cord_stiffness = 10;
+  // Compute the magnitude and direction of the spring reaction of the cord
   float elongation = cord_rest_length - cord.mag();
   PVector spring_force = cord.copy();
   spring_force.normalize();
   spring_force.mult(elongation);
+
+  // Compute the reaction of the cord to the component of the force in its direction
   PVector vertical = new PVector(0,10); // vertical direction
   PVector swing = cord.copy();
   swing.normalize();

@@ -9,7 +9,7 @@ class Mover {
 
  float mass;
  float cord_rest_length = 0;
- float cord_stiffness = 10;
+ float cord_stiffness = 100;
 
  PVector pin_location;
  PVector cord;
@@ -78,7 +78,7 @@ class Mover {
   translate(pin_location.x, pin_location.y);
   PVector trim = cord.copy();
   trim.normalize();
-  trim.mult(-10);
+  trim.mult(-mass*20/2);
   PVector new_cord = PVector.add(cord, trim);
   line(0, 0, new_cord.x, new_cord.y);
   popMatrix();

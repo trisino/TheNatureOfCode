@@ -76,7 +76,11 @@ class Mover {
   ellipse(location.x, location.y, mass*20, mass*20);
   pushMatrix();
   translate(pin_location.x, pin_location.y);
-  line(0, 0, cord.x, cord.y);
+  PVector trim = cord.copy();
+  trim.normalize();
+  trim.mult(-10);
+  PVector new_cord = PVector.add(cord, trim);
+  line(0, 0, new_cord.x, new_cord.y);
   popMatrix();
  }
 

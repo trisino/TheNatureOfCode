@@ -9,7 +9,7 @@ void draw(){
   background(255);
 
   // Create gravitational force
-  PVector gravity = new PVector(0 ,0.01);
+  PVector gravity = new PVector(0 ,0.05);
   m.applyForce(gravity);
   m.update();
   m.edges();

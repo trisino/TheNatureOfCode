@@ -2,18 +2,46 @@ class Mover {
  PVector location;
  PVector velocity;
  PVector acceleration;
+
+ float a;
+ float aVelocity;
+ float aAcceleration;
+
  float mass;
 
- Mover(){
+ PVector pin_location;
+ PVector cord;
+
+ Mover(){ // Default constructor
    mass = random(1,3);
    location = new PVector(random(width),random(height));
+   velocity = new PVector(0,0);
+   acceleration = new PVector(0,0);
+   a = 0.0;
+   aVelocity = 0.0;
+   aAcceleration = 0.0;
+
+   pin_location = new PVector(width/2,0);
+   cord = PVector.sub(location, pin_location);
+ } // Default constructor
+
+ Mover(float xpos, float ypos){ // alternative constructor
+   mass = random(1,3);
+   location = new PVector(xpos,ypos);
    velocity = new PVector(0.1,0);
    acceleration = new PVector(0,0);
+   a = 0.0;
+   aVelocity = 0.0;
+   aAcceleration = 0.0;
+
+   pin_location = new PVector(width/2,0);
+   cord = PVector.sub(location, pin_location);
  }
 
  void update(){
   velocity.add(acceleration);
   location.add(velocity);
+  cord = PVector.sub(location, pin_location);
   acceleration.mult(0);
  }
 
@@ -27,6 +55,10 @@ class Mover {
   stroke(0);
   strokeWeight(2);
   ellipse(location.x, location.y, mass*20, mass*20);
+  pushMatrix();
+  translate(pin_location.x, pin_location.y);
+  line(0, 0, cord.x, cord.y);
+  popMatrix();
  }
 
  void edges(){

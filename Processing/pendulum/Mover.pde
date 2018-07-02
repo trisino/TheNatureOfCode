@@ -28,7 +28,7 @@ class Mover {
  Mover(float xpos, float ypos){ // alternative constructor
    mass = random(1,3);
    location = new PVector(xpos,ypos);
-   velocity = new PVector(0.1,0);
+   velocity = new PVector(0,0);
    acceleration = new PVector(0,0);
    a = 0.0;
    aVelocity = 0.0;
@@ -47,7 +47,16 @@ class Mover {
 
  void applyForce(PVector f){
   PVector force = PVector.div(f, mass);
-  acceleration.add(force);
+
+  // Compute the magnitude and direction of the reaction in the cord
+  PVector vertical = new PVector(0,10); // vertical direction
+  PVector swing = cord.copy();
+  swing.normalize();
+  float theta = PVector.angleBetween(vertical, cord);
+  float tau = force.mag() * cos(theta);
+  swing.mult(-tau);
+  swing.add(force);
+  acceleration.add(swing);
  }
 
  void show(){

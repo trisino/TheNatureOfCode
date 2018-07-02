@@ -2,11 +2,12 @@ Mover m;
 
 void setup(){
   size(600,400);
-  m = new Mover();
+  m = new Mover(width/2, height/2);
 }
 
-void show(){
+void draw(){
   background(255);
   m.update();
+  m.edges();
   m.show();
 }

@@ -8,6 +8,7 @@ class Mover {
  float aAcceleration;
 
  float mass;
+ float cord_rest_length = 0;
 
  PVector pin_location;
  PVector cord;
@@ -23,6 +24,7 @@ class Mover {
 
    pin_location = new PVector(width/2,0);
    cord = PVector.sub(location, pin_location);
+   cord_rest_length = cord.mag();
  } // Default constructor
 
  Mover(float xpos, float ypos){ // alternative constructor
@@ -36,10 +38,25 @@ class Mover {
 
    pin_location = new PVector(width/2,0);
    cord = PVector.sub(location, pin_location);
+   cord_rest_length = cord.mag();
  }
 
  void update(){
-  velocity.add(acceleration);
+  // Compute the magnitude and direction of the reaction in the cord
+  float cord_stiffness = 10;
+  float elongation = cord_rest_length - cord.mag();
+  PVector spring_force = cord.copy();
+  spring_force.normalize();
+  spring_force.mult(elongation);
+  PVector vertical = new PVector(0,10); // vertical direction
+  PVector swing = cord.copy();
+  swing.normalize();
+  float theta = PVector.angleBetween(vertical, cord);
+  float tau = acceleration.mag() * cos(theta);
+  swing.mult(-tau);
+  swing.add(acceleration);
+  swing.add(spring_force);
+  velocity.add(swing);
   location.add(velocity);
   cord = PVector.sub(location, pin_location);
   acceleration.mult(0);
@@ -47,16 +64,7 @@ class Mover {
 
  void applyForce(PVector f){
   PVector force = PVector.div(f, mass);
-
-  // Compute the magnitude and direction of the reaction in the cord
-  PVector vertical = new PVector(0,10); // vertical direction
-  PVector swing = cord.copy();
-  swing.normalize();
-  float theta = PVector.angleBetween(vertical, cord);
-  float tau = force.mag() * cos(theta);
-  swing.mult(-tau);
-  swing.add(force);
-  acceleration.add(swing);
+  acceleration.add(force);
  }
 
  void show(){

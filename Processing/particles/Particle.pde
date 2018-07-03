@@ -1,12 +1,19 @@
 class Particle extends Mover{
 
-  int lifespan = 250;
   int lifespan = 300;
 
   Particle(){
     super();
     location = new PVector(width/2, 100);
-    velocity = new PVector(random(-0.5,0.5), random(0,-1));
+    velocity = new PVector(random(-0.8,0.8), random(-1,0));
+  }
+
+  boolean isDead(){
+    if (lifespan <= 0){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void update(){

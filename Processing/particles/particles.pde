@@ -1,25 +1,12 @@
-ArrayList<Particle> particles;
+ParticleSystem ps;
 
 void setup(){
   size(600,400);
-  particles = new ArrayList<Particle>();
+  ps = new ParticleSystem();
 }
 
 void draw(){
   background(255);
-  particles.add(new Particle());
-
-  // Create gravitational force
-  PVector gravity = new PVector(0 ,0.07);
-
-  for (int i = particles.size()-1; i >=0 ; i--){
-    Particle p = particles.get(i);
-    if (p.isDead()){
-      particles.remove(i);
-    } else {
-      p.applyForce(gravity);
-      p.update();
-      p.show();
-    }
-  }
+  ps.addParticle();
+  ps.run();
 }

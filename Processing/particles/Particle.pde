@@ -1,10 +1,16 @@
 class Particle extends Mover{
 
-  int lifespan = 200;
+  int lifespan = 100;
 
   Particle(){
     super();
     location = new PVector(width/2, 100);
+    velocity = new PVector(random(-0.8,0.8), random(-1,0));
+  }
+
+  Particle(PVector theLocation){
+    super();
+    location = theLocation.copy();
     velocity = new PVector(random(-0.8,0.8), random(-1,0));
   }
 

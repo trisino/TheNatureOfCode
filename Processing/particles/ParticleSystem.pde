@@ -1,12 +1,22 @@
 class ParticleSystem {
   ArrayList<Particle> particles;
+  PVector location;
 
   ParticleSystem() {
     particles = new ArrayList<Particle>();
   }
 
+  ParticleSystem(PVector theLocation) {
+    particles = new ArrayList<Particle>();
+    location = theLocation.copy();
+  }
+
   void addParticle() {
-    particles.add(new Particle());
+    if (location.mag()>=0){
+      particles.add(new Particle(location));
+    } else {
+      particles.add(new Particle());
+    }
   }
 
   void run() {

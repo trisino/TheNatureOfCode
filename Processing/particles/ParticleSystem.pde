@@ -12,8 +12,13 @@ class ParticleSystem {
   }
 
   void addParticle() {
+    float r = random(1);
     if (location.mag()>=0){
-      particles.add(new Particle(location));
+      if (r < 0.4){
+        particles.add(new Particle(location));
+      } else {
+        particles.add(new SquareParticle(location));
+      }
     } else {
       particles.add(new Particle());
     }

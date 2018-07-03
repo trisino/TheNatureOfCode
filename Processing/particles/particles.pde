@@ -16,11 +16,16 @@ void draw(){
   // Create gravitational force
   PVector gravity = new PVector(0 ,0.07);
 
-  for (Particle p : particles){
-    p.applyForce(gravity);
-    p.update();
+  for (int i=0; i < particles.size(); i++){
+    Particle p = particles.get(i);
+    if (p.isDead()){
+      particles.remove(i);
+    } else {
+      p.applyForce(gravity);
+      p.update();
     // p.edges();
 
-    p.show();
+      p.show();
+    }
   }
 }

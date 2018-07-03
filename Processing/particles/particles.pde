@@ -16,7 +16,7 @@ void draw(){
   // Create gravitational force
   PVector gravity = new PVector(0 ,0.07);
 
-  for (int i=0; i < particles.size(); i++){
+  for (int i = particles.size()-1; i >=0 ; i--){
     Particle p = particles.get(i);
     if (p.isDead()){
       particles.remove(i);

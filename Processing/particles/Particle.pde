@@ -10,7 +10,7 @@ class Particle extends Mover{
 
   Particle(PVector theLocation){
     super();
-    location = theLocation.copy();
+    location = theLocation.get();
     velocity = new PVector(random(-0.8,0.8), random(-1,0));
   }
 

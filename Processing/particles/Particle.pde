@@ -1,6 +1,6 @@
 class Particle extends Mover{
 
-  int lifespan = 300;
+  int lifespan = 200;
 
   Particle(){
     super();
@@ -20,13 +20,13 @@ class Particle extends Mover{
    velocity.add(acceleration);
    location.add(velocity);
    acceleration.mult(0);
-   lifespan -= 2;
+   lifespan -= 1;
   } // update() method
 
   void show(){
    fill(127, lifespan);
    stroke(0, lifespan);
    strokeWeight(2);
-   ellipse(location.x, location.y, 20, 20);
+   ellipse(location.x, location.y, 10, 10);
   } // show() method
 }

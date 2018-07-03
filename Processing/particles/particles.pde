@@ -23,8 +23,6 @@ void draw(){
     } else {
       p.applyForce(gravity);
       p.update();
-    // p.edges();
-
       p.show();
     }
   }

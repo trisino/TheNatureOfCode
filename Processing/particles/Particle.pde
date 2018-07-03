@@ -1,6 +1,7 @@
 class Particle extends Mover{
 
   int lifespan = 250;
+  int lifespan = 300;
 
   Particle(){
     super();

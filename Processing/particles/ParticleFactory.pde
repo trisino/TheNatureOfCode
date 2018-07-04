@@ -4,16 +4,13 @@
 // To contribute, push the particle object function onto the this.maps array,
 // as below.
 
-function ParticleFactory() {
-  this.availableparticles = [];
-  this.availableparticles.push(Particle); // Vanilla particle
-  this.availableparticles.push(StarParticle); // Star particle
-  this.availableparticles.push(SquareParticle); // Square particle
+Particle ParticleFactory(PVector location) {
 
-  this.getParticle = function() {
-    if (this.availableparticles.length == 0) return undefined;
+  ArrayList<Particle> particles = new ArrayList<Particle>();
+  particles.add(new Particle(location)); // Vanilla particle
+  particles.add(new StarParticle(location)); // Star particle
+  particles.add(new SquareParticle(location)); // Square particle
 
-    var selected = floor(random(this.availableparticles.length);
-    return new this.availableparticles[selected];
-  }
+  int selected = floor(random(particles.size()));
+  return particles.get(selected);
 }

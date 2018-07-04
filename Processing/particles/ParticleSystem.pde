@@ -12,7 +12,7 @@ class ParticleSystem {
   }
 
   void addParticle() {
-    particles.add(new ParticleFactory().getParticle(location));
+    particles.add(ParticleFactory(location));
   }
 
   void applyForce(PVector force){

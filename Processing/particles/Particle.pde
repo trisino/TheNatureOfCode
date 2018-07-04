@@ -31,7 +31,7 @@ class Particle extends Mover{
 
   void show(){
    fill(255,0,255, lifespan);
-   stroke(0, lifespan);
+   stroke(255,0,255, lifespan);
    strokeWeight(2);
    ellipse(location.x, location.y, 10, 10);
   } // show() method

@@ -9,7 +9,7 @@ void draw(){
   background(255);
 
   PVector gravity = new PVector(0.0, 0.07);
-  PVector wind = new PVector(0.1,0);
+  PVector wind = new PVector(0.05,0);
 
   for (ParticleSystem ps : systems){
     ps.run();

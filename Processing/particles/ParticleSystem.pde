@@ -12,16 +12,7 @@ class ParticleSystem {
   }
 
   void addParticle() {
-    float r = random(1);
-    if (location.mag()>=0){
-      if (r < 0.5){
-        particles.add(new Particle(location));
-      } else {
-        particles.add(new SquareParticle(location));
-      }
-    } else {
-      particles.add(new Particle());
-    }
+    particles.add(new ParticleFactory().getParticle(location));
   }
 
   void applyForce(PVector force){

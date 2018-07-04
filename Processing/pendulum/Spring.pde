@@ -23,10 +23,10 @@ class Spring {
 
   void connect(Mover bob){
     head = bob.location.copy();
-    PVector springDir = PVector.sub(anchor, head);
-    springLen = springDir.mag();
-    springDir.normalize();
-    PVector springforce = springDir.mult(k * (springLen-rest_length) );
+    PVector springforce = PVector.sub(anchor, head);
+    springLen = springforce.mag();
+    springforce.normalize();
+    springforce.mult(k * (springLen-rest_length) );
     bob.applyForce(springforce);
   } // connect(Mover bob) method
 }

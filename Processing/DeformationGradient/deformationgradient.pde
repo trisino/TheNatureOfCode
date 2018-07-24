@@ -13,7 +13,7 @@ void draw(){
 
   for (PointSystem ps : systems){
     ps.run();
-    ps.addParticle();
+    //ps.addParticle();
     ps.applyForce(gravity);
     ps.applyForce(wind);
   }

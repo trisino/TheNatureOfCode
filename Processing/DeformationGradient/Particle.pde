@@ -10,8 +10,14 @@ class Particle extends Mover{
 
   Particle(PVector theLocation){
     super();
-    location = theLocation.get();
+    location = theLocation.copy();
     velocity = new PVector(random(-0.8,0.8), random(-1,0));
+  }
+
+  Particle(PVector theLocation, PVector theVelocity){
+    super();
+    location = theLocation.copy();
+    velocity = theVelocity.copy();
   }
 
   boolean isDead(){
@@ -26,7 +32,7 @@ class Particle extends Mover{
    velocity.add(acceleration);
    location.add(velocity);
    acceleration.mult(0);
-   lifespan -= 1;
+   //lifespan -= 1;
   } // update() method
 
   void show(){

@@ -1,6 +1,7 @@
 class PointSystem {
   ArrayList<Particle> particles;
   PVector location;
+  PVector velocity;
 
   PointSystem() {
     particles = new ArrayList<Particle>();
@@ -11,8 +12,14 @@ class PointSystem {
     location = theLocation.copy();
   }
 
+  PointSystem(PVector theLocation, PVector theVelocity) {
+    particles = new ArrayList<Particle>();
+    location = theLocation.copy();
+    velocity = theVelocity.copy();
+  }
+
   void addParticle() {
-    particles.add(new RoundParticle(location));
+    particles.add(new RoundParticle(location, velocity));
   }
 
   void applyForce(PVector force){

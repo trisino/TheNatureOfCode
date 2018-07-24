@@ -8,8 +8,8 @@ void setup(){
 void draw(){
   background(0);
 
-  PVector gravity = new PVector(0.0, 0.07);
-  PVector wind = new PVector(cos(frameCount/200*PI)*0.05,0);
+  PVector gravity = new PVector(0.0, 0.0);
+  PVector wind = new PVector(cos(frameCount/200*PI)*0.0,0);
 
   for (PointSystem ps : systems){
     ps.run();
@@ -19,6 +19,7 @@ void draw(){
   }
   if (mousePressed){
     PVector mousePos = new PVector(mouseX, mouseY);
-    systems.add(new PointSystem(mousePos));
+    PVector speed = new PVector(0,0);
+    systems.add(new PointSystem(mousePos, speed));
   }
 }

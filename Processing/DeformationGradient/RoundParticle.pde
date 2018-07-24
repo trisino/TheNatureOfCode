@@ -1,7 +1,12 @@
 class RoundParticle extends Particle{
+  PVector velocity;
 
   RoundParticle(PVector location){
     super(location);
+  }
+
+  RoundParticle(PVector location, PVector theVelocity){
+    super(location, theVelocity);
   }
 
   void show(){
